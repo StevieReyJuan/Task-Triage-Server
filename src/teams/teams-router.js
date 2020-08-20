@@ -76,4 +76,45 @@ teamsRouter
             .catch(next)
     });
 
+teamsRouter
+    .route('/join-team')
+    .all(requireAuth)
+    .post(jsonBodyParser, (req, res, next) => {
+
+        const { token } = req.body;
+
+        let joinedTeam;
+        
+        TeamsService.hasTeamWithToken(
+            req.app.get('db'),
+            token
+        )
+            .then(team => {
+                if (!team) {
+                    return res.status(404).json({
+                        error: `Team doesn't exist`
+                    })
+                }
+
+                joinedTeam = team;
+
+                const team_user = {
+                    team_id: team.id,
+                    user_id: req.user.id
+                };  
+
+                return TeamsService.assignUserToTeam(
+                    req.app.get('db'),
+                    team_user
+                )
+                    .then(pair => {
+                        res
+                            .status(201)
+                            // .location()
+                            .json(TeamsService.serializeTeam(joinedTeam))
+                    })
+            })
+            .catch(next)
+    });
+
 module.exports = teamsRouter;

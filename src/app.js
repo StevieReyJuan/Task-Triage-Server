@@ -5,6 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const { NODE_ENV } = require('./config');
 const authRouter = require('./auth/auth-router');
+const usersRouter = require('./users/users-router');
 const teamsRouter = require('./teams/teams-router');
 const tasksRouter = require('./tasks/tasks-router');
 
@@ -21,6 +22,8 @@ app.use(cors());
 app.use(helmet());
 
 app.use('/api/auth', authRouter);
+
+app.use('/api/users', usersRouter);
 
 app.use('/api/teams', teamsRouter);
 

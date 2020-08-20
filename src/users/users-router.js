@@ -51,4 +51,4 @@ usersRouter
         .catch(next);
     });
 
-module.exports = storesRouter;
+module.exports = usersRouter;

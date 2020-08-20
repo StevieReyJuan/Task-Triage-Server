@@ -12,7 +12,13 @@ const TeamsService = {
         return db('teams')
             .where({ name })
             .first()
-            .then(team => !!team); // true, does exist
+            .then(team => !!team); // coerce 'true'; does exist
+    },
+    hasTeamWithToken(db, token) {
+        return db('teams')
+            .where({ token })
+            .first()
+            .then(team => team);
     },
     insertTeam(db, newTeam) {
         return db
@@ -38,11 +44,3 @@ const TeamsService = {
 }
 
 module.exports = TeamsService;
-
-// getTeamsByUser(db, user_id) {
-//     return db
-//         .from('teams', 'teams_users')
-//         .select('teams.*')
-//         .where('teams.id', 'teams_users.team_id')
-//         .where('teams_users.user_id', user_id);
-// }

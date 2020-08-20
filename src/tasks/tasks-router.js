@@ -50,21 +50,11 @@ tasksRouter
             .catch(next)
     });
 
-    tasksRouter
+tasksRouter
     .route('/:teamId/:taskId')
     .all(requireAuth, requireUser, checkTaskExists)
-    .get((req, res, next) => {
-        const team_id = req.params.teamId;
-        const task_id = req.params.taskId;
-        TasksService.getTaskById(
-            req.app.get('db'), 
-            team_id, 
-            task_id
-        )
-            .then(task => {
-                res.json(TasksService.serializeTasks(task));
-            })
-            .catch(next);
+    .get((req, res) => {
+        res.json(TasksService.serializeTasks(res.task));
     })
     .patch(jsonBodyParser, (req, res, next) => {
         const team_id = req.params.teamId;
