@@ -5,5 +5,5 @@ module.exports = {
     TEST_DATABASE_URL: process.env.TEST_DATABASE_URL || 'postgresql://sreyes@localhost/tasktriage-test',
     JWT_SECRET: process.env.JWT_SECRET || 'test-jwt-secret',
     JWT_EXPIRY: process.env.JWT_EXPIRY || '3h',
-    // CLIENT_ORIGIN: 'https://app.vercel.app'
+    CLIENT_ORIGIN: 'https://task-triage-client.vercel.app'
 }
