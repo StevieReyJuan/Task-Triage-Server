@@ -43,8 +43,8 @@ usersRouter
                     )
                         .then(user => {
                             res
-                                .status(204)
-                                .end()
+                                .status(201)
+                                .json(UsersService.serializeUser(user))
                         });
                 });
         })

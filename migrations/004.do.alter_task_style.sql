@@ -1,7 +1,7 @@
 CREATE TYPE task_status AS ENUM (
-    'Immediate',
+    'Urgent',
+    'Elevated',
     'Delay',
-    'Hold',
     'Done'
 );
 

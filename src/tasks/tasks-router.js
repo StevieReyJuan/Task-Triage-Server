@@ -82,7 +82,6 @@ tasksRouter
             taskToUpdate
         )
             .then(task => {
-                console.log(task);
                 res
                     .status(201)
                     .location(path.posix.join(req.originalUrl, `/${task.team}/${task.id}`))

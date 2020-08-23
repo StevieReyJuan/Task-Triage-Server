@@ -38,9 +38,10 @@ teamsRouter
         )
             .then(hasTeamWithTeamName => {
                 if (hasTeamWithTeamName) {
-                    return res.status(400).json({
+                    res.status(400).json({
                         error: 'A team by that name already exists'
                     })
+                    return Promise.reject();
                 }
 
                 const newTeam = {
