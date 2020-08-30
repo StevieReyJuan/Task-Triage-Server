@@ -54,7 +54,9 @@ tasksRouter
     .route('/:teamId/:taskId')
     .all(requireAuth, requireUser, checkTaskExists)
     .get((req, res) => {
-        res.json(TasksService.serializeTasks(res.task));
+        res
+            .status(201)
+            .json(TasksService.serializeTasks(res.task));
     })
     .patch(jsonBodyParser, (req, res, next) => {
         const team_id = req.params.teamId;
