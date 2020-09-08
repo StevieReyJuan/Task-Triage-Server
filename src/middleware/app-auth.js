@@ -19,7 +19,7 @@ function requireUser(req, res, next) {
             next();
         })
         .catch(err => {
-            console.error(err)
+            // console.error(err);
             next(err);
         });
 }
