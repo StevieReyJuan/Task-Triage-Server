@@ -7,7 +7,6 @@ const UsersService = {
             id: user.id,
             name: xss(user.name),
             user_name: xss(user.user_name),
-            // date_created: new Date(user.date_created)
         };
     },
     validatePassword(password) {
@@ -38,9 +37,6 @@ const UsersService = {
             .returning('*')
             .then(([user]) => user);
     }
-    // getAllusers(knex) {
-    //     return knex.select('*').from('users')
-    // }
 }
 
 module.exports = UsersService;

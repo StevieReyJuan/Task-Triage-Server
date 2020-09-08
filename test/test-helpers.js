@@ -248,7 +248,6 @@ function seedTeamsTable(db, teams) {
         );
 }
 
-// add teams users to async?
 function seedTasksTable(db, teams, users, tasks, pairs) {
     // use a transaction to group the queries and auto rollback on any failure
     return db.transaction(async trx => {

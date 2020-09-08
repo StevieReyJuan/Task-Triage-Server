@@ -21,8 +21,6 @@ describe('User Endpoints', () => {
 
     afterEach('cleanup', () => helpers.cleanTables(db));
 
-    // beforeEach('insert users', () => helpers.seedUsersTable(db, testUsers));
-
     describe(`POST /api/users`, () => {
         context(`User Validation`, () => {
             beforeEach('insert users', () => helpers.seedUsersTable(db, testUsers));

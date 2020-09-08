@@ -1,6 +1,5 @@
 const path = require('path');
 const express = require('express');
-// const xss = require('xss');
 const TeamsService = require('./teams-service');
 const { requireAuth } = require('../middleware/jwt-auth');
 const { v4: uuid } = require('uuid');

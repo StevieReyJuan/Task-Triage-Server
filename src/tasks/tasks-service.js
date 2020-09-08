@@ -13,7 +13,6 @@ const TasksService = {
             .select('*')
             .where('team', team_id)
             .where('id', task_id)
-            // .then(([task]) => task);
             .first();
     },
     insertTask(db, newTask) {
